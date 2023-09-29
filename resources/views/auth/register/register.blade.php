@@ -50,6 +50,14 @@
             <div class="border-bottom border-primary">
               <input type="mail" class="w-100 border-0 mail_address" name="mail_address">
             </div>
+            @if ($errors->has('mail_address'))
+              <tr>
+                <th>※</th>
+                @foreach($errors->get('mail_address') as $message)
+                <td> {{ $message }} </td>
+                @endforeach
+              </tr>
+            @endif
           </div>
         </div>
         <div class="mt-3">
@@ -169,11 +177,19 @@
           <div class="border-bottom border-primary">
             <input type="password" class="border-0 w-100 password" name="password">
           </div>
+          @if ($errors->has('password'))
+              <tr>
+                <th>※</th>
+                @foreach($errors->get('password') as $message)
+                <td> {{ $message }} </td>
+                @endforeach
+              </tr>
+            @endif
         </div>
         <div class="mt-3">
           <label class="d-block m-0" style="font-size:13px">確認用パスワード</label>
           <div class="border-bottom border-primary">
-            <input type="password" class="border-0 w-100 password_confirmation" name="password">
+            <input type="password" class="border-0 w-100 password_confirmation" name="password_confirmation">
           </div>
         </div>
         <div class="mt-5 text-right">
