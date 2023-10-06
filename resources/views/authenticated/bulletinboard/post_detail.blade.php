@@ -6,15 +6,22 @@
       <div class="p-3">
         <div class="detail_inner_head">
           <div>
-              @if($errors->any())
-              <div>
-                  <ul>
-                      @foreach ($errors->all() as $error)
-                          <li>{{ $error }}</li>
-                      @endforeach
-                  </ul>
-              </div>
-               @endif
+              @if ($errors->has('post_title'))
+              <tr>
+                <th>※</th>
+                @foreach($errors->get('post_title') as $message)
+                <td> {{ $message }} </td>
+                @endforeach
+              </tr>
+            @endif
+            @if ($errors->has('post_body'))
+              <tr>
+                <th>※</th>
+                @foreach($errors->get('post_body') as $message)
+                <td> {{ $message }} </td>
+                @endforeach
+              </tr>
+            @endif
           </div>
           @if(Auth::user()->id == $post->user_id)
           <div>
@@ -59,6 +66,14 @@
         <input type="hidden" name="post_id" form="commentRequest" value="{{ $post->id }}">
         <input type="submit" class="btn btn-primary" form="commentRequest" value="投稿">
         <form action="{{ route('comment.create') }}" method="post" id="commentRequest">{{ csrf_field() }}</form>
+        @if ($errors->has('comment'))
+              <tr>
+                <th>※</th>
+                @foreach($errors->get('comment') as $message)
+                <td> {{ $message }} </td>
+                @endforeach
+              </tr>
+            @endif
       </div>
     </div>
   </div>
