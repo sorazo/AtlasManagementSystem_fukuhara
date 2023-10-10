@@ -31,6 +31,9 @@
           @endif
         </div>
 
+        @foreach($post->subCategories as $sub_category)
+          <span class="category_btn">{{$sub_category->sub_category}}</span>
+        @endforeach
         <div class="contributor d-flex">
           <p>
             <span>{{ $post->user->over_name }}</span>
