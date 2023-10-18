@@ -52,16 +52,14 @@ class CalendarView{
           if(in_array($day->everyDay(), $day->authReserveDay())){
           $reservePart = $day->authReserveDate($day->everyDay())->first()->setting_part;
           if($reservePart == 1){
-            $reservePart = "リモ1部";
+            $reservePart = "1部参加";
           }else if($reservePart == 2){
-            $reservePart = "リモ2部";
+            $reservePart = "2部参加";
           }else if($reservePart == 3){
-            $reservePart = "リモ3部";
+            $reservePart = "3部参加";
           }
           if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
-            $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px"></p>';
-            $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
-          }else{
+            $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">'.$reservePart.'</p>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }
         }else if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
