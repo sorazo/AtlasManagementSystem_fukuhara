@@ -23,6 +23,7 @@ class CalendarsController extends Controller
         try{
             $getPart = $request->getPart;
             $getDate = $request->getData;
+            // dd($getPart,$getDate);
             $reserveDays = array_filter(array_combine($getDate, $getPart));
             foreach($reserveDays as $key => $value){
                 $reserve_settings = ReserveSettings::where('setting_reserve', $key)->where('setting_part', $value)->first();
@@ -33,6 +34,13 @@ class CalendarsController extends Controller
         }catch(\Exception $e){
             DB::rollback();
         }
+        return redirect()->route('calendar.general.show', ['user_id' => Auth::id()]);
+    }
+
+    public function delete(Request $request){
+        $id = $request->setting_id;
+        dd($id);
+        ReserveSettings::findOrFail($id)->delete();
         return redirect()->route('calendar.general.show', ['user_id' => Auth::id()]);
     }
 }
