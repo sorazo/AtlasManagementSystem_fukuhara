@@ -39,8 +39,13 @@ class CalendarsController extends Controller
 
     public function delete(Request $request){
         $id = $request->setting_id;
-        dd($id);
-        ReserveSettings::findOrFail($id)->delete();
+        // dd($id);
+        $delete_id = ReserveSettings::findOrFail($id);
+
+        $delete_id->increment('limit_users');
+        $delete_id->users()->detach(Auth::id());
+        // dd($delete_id);
+
         return redirect()->route('calendar.general.show', ['user_id' => Auth::id()]);
     }
 }

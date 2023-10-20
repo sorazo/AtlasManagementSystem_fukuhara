@@ -30,18 +30,17 @@ class CalendarWeekDay{
     $three_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '3')->first();
 
     $html[] = '<div class="text-left">';
-    if($one_part == "0"){
-      $html[] = '<p class="day_part m-0 pt-1">1部<span>0</span></p>';
-    }else{
-      $one_part = ReserveSettings::where('setting_reserve', $ymd)->where('setting_part', '1')->count();
-      $html[] = '<p class="day_part m-0 pt-1">1部<span>'.$one_part.'</span></p>';
+    if($one_part){
+      $one_count = $one_part->users()->count();
+      $html[] = '<p class="day_part m-0 pt-1">1部<span>'.$one_count.'</span></p>';
     }
     if($two_part){
-      $two_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '2')->count();
-      $html[] = '<p class="day_part m-0 pt-1">2部<span>'.$two_part.'</span></p>';
+      $two_count = $two_part->users()->count();
+      $html[] = '<p class="day_part m-0 pt-1">2部<span>'.$two_count.'</span></p>';
     }
     if($three_part){
-      $html[] = '<p class="day_part m-0 pt-1">3部</p>';
+      $three_count = $three_part->users()->count();
+      $html[] = '<p class="day_part m-0 pt-1">3部<span>'.$three_count.'</span></p>';
     }
     $html[] = '</div>';
 
