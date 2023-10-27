@@ -19,15 +19,17 @@
   <div class="d-flex">
     <div class="sidebar">
       @section('sidebar')
-      <p><a href="{{ route('top.show') }}">トップ</a></p>
-      <p><a href="/logout">ログアウト</a></p>
-      <p><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a></p>
+      <div class="side">
+      <p><a href="{{ route('top.show') }}" class="fa fa-home"> トップ</a></p>
+      <p><a href="/logout" class="fa fa-share-square"> ログアウト</a></p>
+      <p><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}" class="fa fa-calendar-week"> スクール予約</a></p>
       @if(Auth::user()->role !== 4)
-      <p><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a></p>
-      <p><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}">スクール枠登録</a></p>
+      <p><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}" class="fa fa-calendar-check"> スクール予約確認</a></p>
+      <p><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}" class="fa fa-calendar-plus"> スクール枠登録</a></p>
       @endif
-      <p><a href="{{ route('post.show') }}">掲示板</a></p>
-      <p><a href="{{ route('user.show') }}">ユーザー検索</a></p>
+      <p><a href="{{ route('post.show') }}" class="fa fa-comment"> 掲示板</a></p>
+      <p><a href="{{ route('user.show') }}" class="fa fa-users"> ユーザー検索</a></p>
+      </div>
       @show
     </div>
     <div class="main-container">

@@ -21,13 +21,13 @@ class CalendarView{
     $html[] = '<table class="table">';
     $html[] = '<thead>';
     $html[] = '<tr>';
-    $html[] = '<th>月</th>';
-    $html[] = '<th>火</th>';
-    $html[] = '<th>水</th>';
-    $html[] = '<th>木</th>';
-    $html[] = '<th>金</th>';
-    $html[] = '<th>土</th>';
-    $html[] = '<th>日</th>';
+    $html[] = '<th class="border">月</th>';
+    $html[] = '<th class="border">火</th>';
+    $html[] = '<th class="border">水</th>';
+    $html[] = '<th class="border">木</th>';
+    $html[] = '<th class="border">金</th>';
+    $html[] = '<th class="border day-sat">土</th>';
+    $html[] = '<th class="border day-sun">日</th>';
     $html[] = '</tr>';
     $html[] = '</thead>';
     $html[] = '<tbody>';
@@ -42,9 +42,9 @@ class CalendarView{
         $isPastDate = $day->everyDay() < now();
 
         if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
-          $html[] = '<td class="calendar-td past-day">';
+          $html[] = '<td class="border calendar-td past-day '.$day->getClassName().'">';
         }else{
-          $html[] = '<td class="calendar-td '.$day->getClassName().'">';
+          $html[] = '<td class="border calendar-td '.$day->getClassName().'">';
         }
         $html[] = $day->render();
 
@@ -63,7 +63,7 @@ class CalendarView{
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }
         }else if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
-          $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">受付終了</p>';
+          $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px; color:#000;">受付終了</p>';
           $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
         }
         } else {

@@ -4,36 +4,23 @@
   <div class="w-50 mt-5">
     <div class="m-3 detail_container">
       <div class="p-3">
-        <div class="detail_inner_head">
-          <div>
-              @if ($errors->has('post_title'))
-              <tr>
-                <th>※</th>
-                @foreach($errors->get('post_title') as $message)
-                <td> {{ $message }} </td>
-                @endforeach
-              </tr>
+            @if($errors->first('post_title'))
+            <span class="error_message">{{ $errors->first('post_title') }}</span>
             @endif
-            @if ($errors->has('post_body'))
-              <tr>
-                <th>※</th>
-                @foreach($errors->get('post_body') as $message)
-                <td> {{ $message }} </td>
-                @endforeach
-              </tr>
+            @if($errors->first('post_body'))
+            <span class="error_message">{{ $errors->first('post_body') }}</span>
             @endif
-          </div>
           @if(Auth::user()->id == $post->user_id)
-          <div>
-            <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
-            <a href="{{ route('post.delete', ['id' => $post->id]) }}" onclick="return confirm('削除してよろしいですか？')">削除</a>
-          </div>
-          @endif
-        </div>
-
-        @foreach($post->subCategories as $sub_category)
-          <span class="category_btn">{{$sub_category->sub_category}}</span>
-        @endforeach
+            <div class="detail_inner_head">
+              @foreach($post->subCategories as $sub_category)
+              <span class="category_btn">{{$sub_category->sub_category}}</span>
+              @endforeach
+              <div>
+                <span class="edit-modal-open btn btn-primary btn-sm" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
+                <a class="btn btn-danger btn-sm" href="{{ route('post.delete', ['id' => $post->id]) }}" onclick="return confirm('削除してよろしいですか？')">削除</a>
+              </div>
+            </div>
+            @endif
         <div class="contributor d-flex">
           <p>
             <span>{{ $post->user->over_name }}</span>
@@ -62,21 +49,18 @@
     </div>
   </div>
   <div class="w-50 p-3">
-    <div class="comment_container border m-5">
+    <div class="comment_container m-5">
       <div class="comment_area p-3">
-        <p class="m-0">コメントする</p>
-        <textarea class="w-100" name="comment" form="commentRequest"></textarea>
-        <input type="hidden" name="post_id" form="commentRequest" value="{{ $post->id }}">
-        <input type="submit" class="btn btn-primary" form="commentRequest" value="投稿">
-        <form action="{{ route('comment.create') }}" method="post" id="commentRequest">{{ csrf_field() }}</form>
-        @if ($errors->has('comment'))
-              <tr>
-                <th>※</th>
-                @foreach($errors->get('comment') as $message)
-                <td> {{ $message }} </td>
-                @endforeach
-              </tr>
+        @if($errors->first('comment'))
+            <span class="error_message">{{ $errors->first('comment') }}</span>
             @endif
+        <p class="m-0">コメントする</p>
+        <textarea class="w-100 border" name="comment" form="commentRequest"></textarea>
+        <input type="hidden" name="post_id" form="commentRequest" value="{{ $post->id }}">
+        <div style="text-align: right;">
+          <input type="submit" class="btn btn-primary" form="commentRequest" value="投稿">
+        </div>
+        <form action="{{ route('comment.create') }}" method="post" id="commentRequest">{{ csrf_field() }}</form>
       </div>
     </div>
   </div>
@@ -87,10 +71,10 @@
     <form action="{{ route('post.edit') }}" method="post">
       <div class="w-100">
         <div class="modal-inner-title w-50 m-auto">
-          <input type="text" name="post_title" placeholder="タイトル" class="w-100">
+          <input type="text" name="post_title" placeholder="タイトル" class="w-100 border">
         </div>
         <div class="modal-inner-body w-50 m-auto pt-3 pb-3">
-          <textarea placeholder="投稿内容" name="post_body" class="w-100"></textarea>
+          <textarea placeholder="投稿内容" name="post_body" class="w-100 border"></textarea>
         </div>
         <div class="w-50 m-auto edit-modal-btn d-flex">
           <a class="js-modal-close btn btn-danger d-inline-block" href="">閉じる</a>

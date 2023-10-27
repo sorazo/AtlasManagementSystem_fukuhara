@@ -5,75 +5,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AtlasBulletinBoard</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
-  <link href="{{ asset('css/style.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Oswald:wght@200&display=swap" rel="stylesheet">
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="all_content">
   <form action="{{ route('registerPost') }}" method="POST">
     <div class="w-100 vh-100 d-flex" style="align-items:center; justify-content:center;">
-      <div class="w-25 vh-75 border p-3">
+      <div class="w-25 vh-75 border py-3 px-5 box">
         <div class="register_form">
           <div class="d-flex mt-3" style="justify-content:space-between">
-            <div class="" style="width:140px">
+            <div class="" style="width:170px">
               <label class="d-block m-0" style="font-size:13px">姓</label>
-              <div class="border-bottom border-primary" style="width:140px;">
-                <input type="text" style="width:140px;" class="border-0 over_name" name="over_name">
+              <div class="border-bottom border-primary" style="width:170px;">
+                <input type="text" style="width:170px;" class="border-0 over_name" name="over_name">
               </div>
               @if ($errors->has('over_name'))
-              <tr>
-                <th>※</th>
                 @foreach($errors->get('over_name') as $message)
-                <td> {{ $message }} </td>
+                <div class="error"> {{ $message }} </div>
                 @endforeach
-              </tr>
             @endif
             </div>
-            <div class="" style="width:140px">
+            <div class="" style="width:170px">
               <label class=" d-block m-0" style="font-size:13px">名</label>
-              <div class="border-bottom border-primary" style="width:140px;">
-                <input type="text" style="width:140px;" class="border-0 under_name" name="under_name">
+              <div class="border-bottom border-primary" style="width:170px;">
+                <input type="text" style="width:170px;" class="border-0 under_name" name="under_name">
               </div>
               @if ($errors->has('under_name'))
-              <tr>
-                <th>※</th>
                 @foreach($errors->get('under_name') as $message)
-                <td> {{ $message }} </td>
+                <div class="error"> {{ $message }} </div>
                 @endforeach
-              </tr>
             @endif
             </div>
           </div>
           <div class="d-flex mt-3" style="justify-content:space-between">
-            <div class="" style="width:140px">
+            <div class="" style="width:170px">
               <label class="d-block m-0" style="font-size:13px">セイ</label>
-              <div class="border-bottom border-primary" style="width:140px;">
-                <input type="text" style="width:140px;" class="border-0 over_name_kana" name="over_name_kana">
+              <div class="border-bottom border-primary" style="width:170px;">
+                <input type="text" style="width:170px;" class="border-0 over_name_kana" name="over_name_kana">
               </div>
               @if ($errors->has('over_name_kana'))
-              <tr>
-                <th>※</th>
                 @foreach($errors->get('over_name_kana') as $message)
-                <td> {{ $message }} </td>
+                <div class="error"> {{ $message }} </div>
                 @endforeach
-              </tr>
             @endif
             </div>
-            <div class="" style="width:140px">
+            <div class="" style="width:170px">
               <label class="d-block m-0" style="font-size:13px">メイ</label>
-              <div class="border-bottom border-primary" style="width:140px;">
-                <input type="text" style="width:140px;" class="border-0 under_name_kana" name="under_name_kana">
+              <div class="border-bottom border-primary" style="width:170px;">
+                <input type="text" style="width:170px;" class="border-0 under_name_kana" name="under_name_kana">
               </div>
               @if ($errors->has('under_name_kana'))
-              <tr>
-                <th>※</th>
                 @foreach($errors->get('under_name_kana') as $message)
-                <td> {{ $message }} </td>
+                <div class="error"> {{ $message }} </div>
                 @endforeach
-              </tr>
             @endif
             </div>
           </div>
@@ -83,34 +71,34 @@
               <input type="mail" class="w-100 border-0 mail_address" name="mail_address">
             </div>
             @if ($errors->has('mail_address'))
-              <tr>
-                <th>※</th>
                 @foreach($errors->get('mail_address') as $message)
-                <td> {{ $message }} </td>
+                <div class="error"> {{ $message }} </div>
                 @endforeach
-              </tr>
             @endif
           </div>
         </div>
-        <div class="mt-3">
+        <div class="mt-3 d-flex radio">
+          <div>
           <input type="radio" name="sex" class="sex" value="1">
           <label style="font-size:13px">男性</label>
+          </div>
+          <div>
           <input type="radio" name="sex" class="sex" value="2">
           <label style="font-size:13px">女性</label>
+          </div>
+          <div>
           <input type="radio" name="sex" class="sex" value="3">
           <label style="font-size:13px">その他</label>
-          @if ($errors->has('sex'))
-              <tr>
-                <th>※</th>
-                @foreach($errors->get('sex') as $message)
-                <td> {{ $message }} </td>
-                @endforeach
-              </tr>
-            @endif
+          </div>
         </div>
+        @if ($errors->has('sex'))
+                @foreach($errors->get('sex') as $message)
+                <div class="error"> {{ $message }} </div>
+                @endforeach
+            @endif
         <div class="mt-3">
-          <label class="d-block m-0 aa" style="font-size:13px">生年月日</label>
-          <select class="old_year" name="old_year">
+          <label class="d-block m-0 aa " style="font-size:13px">生年月日</label>
+          <select class="old_year border-bottom border-primary" style="width:100px; border:none;" name="old_year">
             <option value="none">-----</option>
             <option value="1985">1985</option>
             <option value="1986">1986</option>
@@ -140,7 +128,7 @@
             <option value="2010">2010</option>
           </select>
           <label style="font-size:13px">年</label>
-          <select class="old_month" name="old_month">
+          <select class="old_month border-bottom border-primary" style="width:100px; border:none;" name="old_month">
             <option value="none">-----</option>
             <option value="01">1</option>
             <option value="02">2</option>
@@ -156,7 +144,7 @@
             <option value="12">12</option>
           </select>
           <label style="font-size:13px">月</label>
-          <select class="old_day" name="old_day">
+          <select class="old_day border-bottom border-primary" style="width:100px; border:none;"  name="old_day">
             <option value="none">-----</option>
             <option value="01">1</option>
             <option value="02">2</option>
@@ -193,31 +181,33 @@
           <label style="font-size:13px">日</label>
         </div>
         @if ($errors->has('old_date'))
-              <tr>
-                <th>※</th>
                 @foreach($errors->get('old_date') as $message)
-                <td> {{ $message }} </td>
+                <div class="error"> {{ $message }} </div>
                 @endforeach
-              </tr>
             @endif
-        <div class="mt-3">
+        <div class="mt-3 d-flex radio">
           <label class="d-block m-0" style="font-size:13px">役職</label>
+          <div>
           <input type="radio" name="role" class="admin_role role" value="1">
           <label style="font-size:13px">教師(国語)</label>
+          </div>
+          <div>
           <input type="radio" name="role" class="admin_role role" value="2">
           <label style="font-size:13px">教師(数学)</label>
+          </div>
+          <div>
           <input type="radio" name="role" class="admin_role role" value="3">
           <label style="font-size:13px">教師(英語)</label>
+          </div>
+          <div>
           <input type="radio" name="role" class="other_role role" value="4">
           <label style="font-size:13px" class="other_role">生徒</label>
+          </div>
         </div>
         @if ($errors->has('role'))
-              <tr>
-                <th>※</th>
                 @foreach($errors->get('role') as $message)
-                <td> {{ $message }} </td>
+                <div class="error"> {{ $message }} </div>
                 @endforeach
-              </tr>
             @endif
         <div class="select_teacher d-none">
           <label class="d-block m-0" style="font-size:13px">選択科目</label>
@@ -234,12 +224,9 @@
             <input type="password" class="border-0 w-100 password" name="password">
           </div>
           @if ($errors->has('password'))
-              <tr>
-                <th>※</th>
                 @foreach($errors->get('password') as $message)
-                <td> {{ $message }} </td>
+                <div class="error"> {{ $message }} </div>
                 @endforeach
-              </tr>
             @endif
         </div>
         <div class="mt-3">
@@ -252,7 +239,7 @@
           <input type="submit" class="btn btn-primary register_btn" disabled value="新規登録" onclick="return confirm('登録してよろしいですか？')">
         </div>
         <div class="text-center">
-          <a href="{{ route('loginView') }}">ログイン</a>
+          <a href="{{ route('loginView') }}">ログインはこちら</a>
         </div>
       </div>
       {{ csrf_field() }}
