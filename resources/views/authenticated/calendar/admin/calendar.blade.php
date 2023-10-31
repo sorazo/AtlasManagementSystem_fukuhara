@@ -1,14 +1,11 @@
 @extends('layouts.sidebar')
-
 @section('content')
-<div class="vh-100 pt-5" style="background:#ECF1F6;">
-  <div class="w-75 m-auto pt-5 pb-5" style="border-radius:10px; background:#FFF; box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);">
-    <div class="w-75 m-auto">
-      <p class="text-center">{{ $calendar->getTitle() }}</p>
-      <div class="">
+
+  <div class="w-100 vh-100 p-5">
+    <div class=" w-75 m-auto pt-5 pb-5" style="border-radius:10px; background:#FFF; box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);">
+      <h4 class="text-center mb-4">{{ $calendar->getTitle() }}</h4>
         {!! $calendar->render() !!}
-      </div>
     </div>
   </div>
-</div>
+
 @endsection

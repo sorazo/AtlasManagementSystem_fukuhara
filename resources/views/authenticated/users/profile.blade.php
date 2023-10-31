@@ -1,10 +1,10 @@
 @extends('layouts.sidebar')
 
 @section('content')
-<div class="vh-100 border">
+<div class="vh-100 border" >
+  <p class="p-3" ><span>{{ $user->over_name }}</span><span>{{ $user->under_name }}さんのプロフィール</span></p>
   <div class="top_area w-75 m-auto pt-5">
-    <span>{{ $user->over_name }}</span><span>{{ $user->under_name }}さんのプロフィール</span>
-    <div class="user_status p-3">
+    <div class="user_status p-3" style="box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);">
       <p>名前 : <span>{{ $user->over_name }}</span><span class="ml-1">{{ $user->under_name }}</span></p>
       <p>カナ : <span>{{ $user->over_name_kana }}</span><span class="ml-1">{{ $user->under_name_kana }}</span></p>
       <p>性別 : @if($user->sex == 1)<span>男</span>@else<span>女</span>@endif</p>
