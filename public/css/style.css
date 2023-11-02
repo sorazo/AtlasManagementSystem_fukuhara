@@ -27,9 +27,15 @@
   justify-content: space-around;
 }
 
+.role {
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
 /* body */
 .all_content {
   background: #ECF1F6;
+  margin: 0;
 }
 
 ul,
@@ -40,14 +46,17 @@ li {
 /* サイドバー */
 .sidebar {
   width: 200px;
-  height: 100vh;
   background-color: #03AAD2;
   font-weight: bold;
+  flex-shrink: 0;
+  height: auto;
+  min-height: 100vh;
 }
 
 .side {
   margin-top: 20px;
   margin-left: 5px;
+  flex-grow: 1;
 }
 
 .main-container {
@@ -394,7 +403,7 @@ li {
 .reserve_users_area {
   display: flex;
   flex-wrap: wrap;
-  width: 1200px;
+  /* width: 1200px; */
   margin: 10px auto;
   height: 80vh;
   overflow: scroll;

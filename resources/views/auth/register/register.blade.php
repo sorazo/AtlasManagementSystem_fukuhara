@@ -14,8 +14,8 @@
 </head>
 <body class="all_content">
   <form action="{{ route('registerPost') }}" method="POST">
-    <div class="w-100 vh-100 d-flex" style="align-items:center; justify-content:center;">
-      <div class="w-25 vh-75 border py-3 px-5 box">
+    <div class="w-100 vh-100 my-3 d-flex" style="align-items:center; justify-content:center;">
+      <div class="vh-75 border py-3 px-5 box">
         <div class="register_form">
           <div class="d-flex mt-3" style="justify-content:space-between">
             <div class="" style="width:170px">
@@ -23,48 +23,38 @@
               <div class="border-bottom border-primary" style="width:170px;">
                 <input type="text" style="width:170px;" class="border-0 over_name" name="over_name">
               </div>
-              @if ($errors->has('over_name'))
-                @foreach($errors->get('over_name') as $message)
-                <div class="error"> {{ $message }} </div>
-                @endforeach
-            @endif
             </div>
             <div class="" style="width:170px">
               <label class=" d-block m-0" style="font-size:13px">名</label>
               <div class="border-bottom border-primary" style="width:170px;">
                 <input type="text" style="width:170px;" class="border-0 under_name" name="under_name">
               </div>
-              @if ($errors->has('under_name'))
-                @foreach($errors->get('under_name') as $message)
+            </div>
+          </div>
+          @if ($errors->has('name'))
+                @foreach($errors->get('name') as $message)
                 <div class="error"> {{ $message }} </div>
                 @endforeach
             @endif
-            </div>
-          </div>
           <div class="d-flex mt-3" style="justify-content:space-between">
             <div class="" style="width:170px">
               <label class="d-block m-0" style="font-size:13px">セイ</label>
               <div class="border-bottom border-primary" style="width:170px;">
                 <input type="text" style="width:170px;" class="border-0 over_name_kana" name="over_name_kana">
               </div>
-              @if ($errors->has('over_name_kana'))
-                @foreach($errors->get('over_name_kana') as $message)
-                <div class="error"> {{ $message }} </div>
-                @endforeach
-            @endif
             </div>
             <div class="" style="width:170px">
               <label class="d-block m-0" style="font-size:13px">メイ</label>
               <div class="border-bottom border-primary" style="width:170px;">
                 <input type="text" style="width:170px;" class="border-0 under_name_kana" name="under_name_kana">
               </div>
-              @if ($errors->has('under_name_kana'))
-                @foreach($errors->get('under_name_kana') as $message)
+            </div>
+          </div>
+          @if ($errors->has('name_kana'))
+                @foreach($errors->get('name_kana') as $message)
                 <div class="error"> {{ $message }} </div>
                 @endforeach
             @endif
-            </div>
-          </div>
           <div class="mt-3">
             <label class="m-0 d-block" style="font-size:13px">メールアドレス</label>
             <div class="border-bottom border-primary">
@@ -185,23 +175,25 @@
                 <div class="error"> {{ $message }} </div>
                 @endforeach
             @endif
-        <div class="mt-3 d-flex radio">
+        <div class="mt-3">
           <label class="d-block m-0" style="font-size:13px">役職</label>
-          <div>
-          <input type="radio" name="role" class="admin_role role" value="1">
-          <label style="font-size:13px">教師(国語)</label>
-          </div>
-          <div>
-          <input type="radio" name="role" class="admin_role role" value="2">
-          <label style="font-size:13px">教師(数学)</label>
-          </div>
-          <div>
-          <input type="radio" name="role" class="admin_role role" value="3">
-          <label style="font-size:13px">教師(英語)</label>
-          </div>
-          <div>
-          <input type="radio" name="role" class="other_role role" value="4">
-          <label style="font-size:13px" class="other_role">生徒</label>
+          <div class="d-flex role">
+            <div>
+              <input type="radio" name="role" class="admin_role role" value="1">
+              <label style="font-size:13px">教師(国語)</label>
+            </div>
+            <div>
+              <input type="radio" name="role" class="admin_role role" value="2">
+              <label style="font-size:13px">教師(数学)</label>
+            </div>
+            <div>
+              <input type="radio" name="role" class="admin_role role" value="3">
+              <label style="font-size:13px">教師(英語)</label>
+            </div>
+            <div>
+              <input type="radio" name="role" class="other_role role" value="4">
+              <label style="font-size:13px" class="other_role">生徒</label>
+            </div>
           </div>
         </div>
         @if ($errors->has('role'))

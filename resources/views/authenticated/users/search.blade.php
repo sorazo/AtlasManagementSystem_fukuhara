@@ -1,8 +1,8 @@
 @extends('layouts.sidebar')
 
 @section('content')
-<div class="search_content w-100 d-flex">
-  <div class="reserve_users_area">
+<div class="search_content w-100 m-auto d-flex">
+  <div class="reserve_users_area w-75 mt-5">
     @foreach($users as $user)
     <div class="p-4 one_person">
       <div class="mb-3">
@@ -50,7 +50,7 @@
     </div>
     @endforeach
   </div>
-  <div class="search_area w-25 mt-5">
+  <div class="search_area  mt-5">
     <h5 class="mt-5" style="color:#005FFF; margin-bottom:20px;">検索</h5>
     <div style="padding-left:10px;">
     <div>
