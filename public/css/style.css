@@ -48,7 +48,6 @@ li {
   width: 200px;
   background-color: #03AAD2;
   font-weight: bold;
-  flex-shrink: 0;
   height: auto;
   min-height: 100vh;
 }

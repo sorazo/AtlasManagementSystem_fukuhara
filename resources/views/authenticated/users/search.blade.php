@@ -1,7 +1,7 @@
 @extends('layouts.sidebar')
 
 @section('content')
-<div class="search_content w-100 m-auto d-flex">
+<div class="search_content w-100 d-flex">
   <div class="reserve_users_area w-75 mt-5">
     @foreach($users as $user)
     <div class="p-4 one_person">
